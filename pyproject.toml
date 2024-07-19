@@ -18,6 +18,7 @@ asyncpg = "^0.29.0"
 greenlet = "^3.0.3"
 geopy = "^2.4.1"
 aiohttp = "^3.9.5"
+prometheus-fastapi-instrumentator = "^7.0.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.5.2"

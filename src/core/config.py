@@ -25,6 +25,8 @@ class Settings(BaseSettings):
     DB_ASYNC_URI: str
     THRESHOLDS: Thresholds
 
+    INTERVAL_SECONDS: int = 15
+
     model_config = SettingsConfigDict(json_file="settings.json", extra="ignore")
 
     @classmethod
