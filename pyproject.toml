@@ -1,0 +1,70 @@
+[tool.poetry]
+name = "driver-anomaly-detection"
+version = "0.1.0"
+description = ""
+authors = ["Valentyn Khoroshchak <37864128+vkhoroshchak@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "*", from="src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.1"
+pydantic-settings = "^2.3.4"
+sqlalchemy = "^2.0.31"
+sqlmodel = "^0.0.20"
+alembic = "^1.13.2"
+asyncpg = "^0.29.0"
+greenlet = "^3.0.3"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+src = ["src"]
+line-length = 119
+
+[tool.ruff.lint]
+select = [
+  "E", # pycodestyle errors
+  "W", # pycodestyle warnings
+  "F", # pyflakes
+  "I", # isort
+  "C4",  # flake8-comprehensions
+  "B", # flake8-bugbear
+  "UP", # pyupgrade
+  "ANN", # flake8-annotations
+
+]
+ignore = [
+  "B008", # do not perform function calls in argument defaults
+  "ANN002", # Missing type annotation for *args
+  "ANN003", # Missing type annotation for **kwargs
+  "ANN101", # Missing type annotation for self in method
+  "ANN102", # Missing type annotation for cls in classmethod
+  "ANN204", # Missing type annotation for special methods
+]
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "__pypackages__",
+    "node_modules",
+    "venv",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+
+
