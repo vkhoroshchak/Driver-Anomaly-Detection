@@ -1,10 +1,14 @@
 {
   "SERVER_NAME": "Driver Anomaly Detection API",
+  "SERVER_URL": "http://api:8000/api/v1/driver-geo",
   "DEBUG": false,
   "SECRET_KEY": "secret",
   "DB_ASYNC_URI": "postgresql+asyncpg://postgres:postgres@db:5432/driver_app",
   "THRESHOLDS": {
     "MAX_SPEED_KMH": 120,
     "MAX_ALTITUDE_M": 1000
-  }
+  },
+  "NUM_DRIVERS": 5,
+  "INTERVAL_SECONDS": 15,
+  "MAX_RETRIES": 3
 }

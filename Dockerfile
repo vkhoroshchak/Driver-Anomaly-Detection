@@ -13,13 +13,14 @@ ENV PYTHONUNBUFFERED=1 \
 
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
-FROM python-base AS builder-base
-RUN buildDeps="build-essential" \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install --no-install-recommends -y \
         curl \
-    && apt-get install -y --no-install-recommends $buildDeps \
+        build-essential \
     && rm -rf /var/lib/apt/lists/*
+
+FROM python-base AS builder-base
+
 
 ENV POETRY_VERSION=1.7.1
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -49,4 +50,3 @@ WORKDIR /app
 COPY . .
 
 EXPOSE 8000
-

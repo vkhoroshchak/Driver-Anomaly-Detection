@@ -23,7 +23,25 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+    - db
+    healthcheck:
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 3
+      test: "curl -f http://api:8000/"
+
+  geodata_generator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "python geodata_generator.py"
+    volumes:
+      - .:/app
+    restart: on-failure
+    depends_on:
+      api:
+        condition: service_healthy
 
 volumes:
   db-data:
