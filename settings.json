@@ -2,5 +2,9 @@
   "SERVER_NAME": "Driver Anomaly Detection API",
   "DEBUG": false,
   "SECRET_KEY": "secret",
-  "DB_ASYNC_URI": "postgresql+asyncpg://postgres:postgres@db:5432/driver_app"
+  "DB_ASYNC_URI": "postgresql+asyncpg://postgres:postgres@db:5432/driver_app",
+  "THRESHOLDS": {
+    "MAX_SPEED_KMH": 120,
+    "MAX_ALTITUDE_M": 1000
+  }
 }

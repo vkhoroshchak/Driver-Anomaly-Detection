@@ -1,6 +1,7 @@
 from functools import lru_cache
 from typing import List, Tuple, Type
 
+from pydantic import BaseModel
 from pydantic_settings import (
     BaseSettings,
     JsonConfigSettingsSource,
@@ -9,16 +10,22 @@ from pydantic_settings import (
 )
 
 
+class Thresholds(BaseModel):
+    MAX_SPEED_KMH: float
+    MAX_ALTITUDE_M: float
+
+
 class Settings(BaseSettings):
     SERVER_NAME: str
     BACKEND_CORS_ORIGINS: List[str] = ["*"]
     DEBUG: bool = False
-
+    API_VERSION: str = "v1"
     SECRET_KEY: str
 
     DB_ASYNC_URI: str
+    THRESHOLDS: Thresholds
 
-    model_config = SettingsConfigDict(json_file="settings.json")
+    model_config = SettingsConfigDict(json_file="settings.json", extra="ignore")
 
     @classmethod
     def settings_customise_sources(
